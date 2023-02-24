@@ -1,0 +1,205 @@
+1)volatility -f MemoryDump_lab1.raw imageinfo  - give you information about file 
+
+output-> 
+
+volatility -f MemoryDump_Lab1.raw imageinfo
+Volatility Foundation Volatility Framework 2.6
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/pratik/Desktop/Memory_Forensics/MemLabs/Lab 1/MemoryDump_Lab1.raw)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf800028100a0L
+          Number of Processors : 1
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff80002811d00L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2019-12-11 14:38:00 UTC+0000
+     Image local date and time : 2019-12-11 20:08:00 +0530
+
+
+
+2)volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 pslist   ---- this commend use for list prossess run in system
+
+
+output--> 
+
+Volatility Foundation Volatility Framework 2.6
+Offset(V)          Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Start                          Exit                          
+------------------ -------------------- ------ ------ ------ -------- ------ ------ ------------------------------ ------------------------------
+0xfffffa8000ca0040 System                    4      0     80      570 ------      0 2019-12-11 13:41:25 UTC+0000                                 
+0xfffffa800148f040 smss.exe                248      4      3       37 ------      0 2019-12-11 13:41:25 UTC+0000                                 
+0xfffffa800154f740 csrss.exe               320    312      9      457      0      0 2019-12-11 13:41:32 UTC+0000                                 
+0xfffffa8000ca81e0 csrss.exe               368    360      7      199      1      0 2019-12-11 13:41:33 UTC+0000                                 
+0xfffffa8001c45060 psxss.exe               376    248     18      786      0      0 2019-12-11 13:41:33 UTC+0000                                 
+0xfffffa8001c5f060 winlogon.exe            416    360      4      118      1      0 2019-12-11 13:41:34 UTC+0000                                 
+0xfffffa8001c5f630 wininit.exe             424    312      3       75      0      0 2019-12-11 13:41:34 UTC+0000                                 
+0xfffffa8001c98530 services.exe            484    424     13      219      0      0 2019-12-11 13:41:35 UTC+0000                                 
+0xfffffa8001ca0580 lsass.exe               492    424      9      764      0      0 2019-12-11 13:41:35 UTC+0000                                 
+0xfffffa8001ca4b30 lsm.exe                 500    424     11      185      0      0 2019-12-11 13:41:35 UTC+0000                                 
+0xfffffa8001cf4b30 svchost.exe 
+
+
+
+3)volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 cmdscan --- for run commend runing in system
+
+output->Volatility Foundation Volatility Framework 2.6
+**************************************************
+CommandProcess: conhost.exe Pid: 2692
+CommandHistory: 0x1fe9c0 Application: cmd.exe Flags: Allocated, Reset
+CommandCount: 1 LastAdded: 0 LastDisplayed: 0
+FirstCommand: 0 CommandCountMax: 50
+ProcessHandle: 0x60
+Cmd #0 @ 0x1de3c0: St4G3$1
+Cmd #15 @ 0x1c0158: 
+Cmd #16 @ 0x1fdb30: 
+**************************************************
+CommandProcess: conhost.exe Pid: 2260
+CommandHistory: 0x38ea90 Application: DumpIt.exe Flags: Allocated
+CommandCount: 0 LastAdded: -1 LastDisplayed: -1
+FirstCommand: 0 CommandCountMax: 50
+ProcessHandle: 0x60
+Cmd #15 @ 0x350158: 8
+Cmd #16 @ 0x38dc00: 8
+
+
+
+4)volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64  consoles ---> this pluging use for see the output of runng commend
+
+ouput----> Volatility Foundation Volatility Framework 2.6
+**************************************************
+ConsoleProcess: conhost.exe Pid: 2692
+Console: 0xff756200 CommandHistorySize: 50
+HistoryBufferCount: 1 HistoryBufferMax: 4
+OriginalTitle: %SystemRoot%\system32\cmd.exe
+Title: C:\Windows\system32\cmd.exe - St4G3$1
+AttachedProcess: cmd.exe Pid: 1984 Handle: 0x60
+----
+CommandHistory: 0x1fe9c0 Application: cmd.exe Flags: Allocated, Reset
+CommandCount: 1 LastAdded: 0 LastDisplayed: 0
+FirstCommand: 0 CommandCountMax: 50
+ProcessHandle: 0x60
+Cmd #0 at 0x1de3c0: St4G3$1
+----
+Screen 0x1e0f70 X:80 Y:300
+Dump:
+Microsoft Windows [Version 6.1.7601]                                            
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.                 
+                                                                                
+C:\Users\SmartNet>St4G3$1                                                       
+ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzMhIX0=                                        
+Press any key to continue . . .                                                 
+**************************************************
+ConsoleProcess: conhost.exe Pid: 2260
+Console: 0xff756200 CommandHistorySize: 50
+HistoryBufferCount: 1 HistoryBufferMax: 4
+OriginalTitle: C:\Users\SmartNet\Downloads\DumpIt\DumpIt.exe
+Title: C:\Users\SmartNet\Downloads\DumpIt\DumpIt.exe
+AttachedProcess: DumpIt.exe Pid: 796 Handle: 0x60
+----
+CommandHistory: 0x38ea90 Application: DumpIt.exe Flags: Allocated
+CommandCount: 0 LastAdded: -1 LastDisplayed: -1
+FirstCommand: 0 CommandCountMax: 50
+ProcessHandle: 0x60
+----
+Screen 0x371050 X:80 Y:300
+Dump:
+  DumpIt - v1.3.2.20110401 - One click memory memory dumper                     
+  Copyright (c) 2007 - 2011, Matthieu Suiche <http://www.msuiche.net>           
+  Copyright (c) 2010 - 2011, MoonSols <http://www.moonsols.com>                 
+                                                                                
+                                                                                
+    Address space size:        1073676288 bytes (   1023 Mb)                    
+    Free space size:          24185389056 bytes (  23064 Mb)                    
+                                                                                
+    * Destination = \??\C:\Users\SmartNet\Downloads\DumpIt\SMARTNET-PC-20191211-
+143755.raw                                                                      
+                                                                                
+    --> Are you sure you want to continue? [y/n] y                              
+    + Processing...  
+    
+    
+5) echo ZmxhZ3t0aDFzXzFzX3RoM18xc3Rfc3Q0ZzMhIX0= | base64 -d
+   -> frist flag -----> flag{th1s_1s_th3_1st_st4g3!!}┌
+   
+   
+   
+6) volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 memdump -p 2424(process id) -D .      ----dump process run (dot mean current directry)
+
+7) mv 2424.dmp 2424.data
+8) gimp 2424.data  ---> open image file 
+   offset value -- 677451
+   width - 1230
+   height - 10000
+
+
+
+9) volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 cmdline ---> use for which argument supply in partularular process
+
+output --> Volatility Foundation Volatility Framework 2.6
+************************************************************************
+System pid:      4
+************************************************************************
+smss.exe pid:    248
+Command line : \SystemRoot\System32\smss.exe
+************************************************************************
+csrss.exe pid:    320
+Command line : %SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=winsrv:ConServerDllInitialization,2 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16
+************************************************************************
+csrss.exe pid:    368
+Command line : %SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=winsrv:ConServerDllInitialization,2 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16
+************************************************************************
+psxss.exe pid:    376
+Command line : %SystemRoot%\system32\psxss.exe
+************************************************************************
+winlogon.exe pid:    416
+Command line : winlogon.exe
+************************************************************************
+wininit.exe pid:    424
+Command line : wininit.exe
+************************************************************************
+services.exe pid:    484
+Command line : C:\Windows\system32\services.exe
+************************************************************************
+lsass.exe pid:    492
+Command line : C:\Windows\system32\lsass.exe
+************************************************************************
+
+
+10) volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 filescan | grep -i import.rar  ---> scan file and grap file location
+
+ouput --> 
+
+  Volatility Foundation Volatility Framework 2.6
+0x000000003fa3ebc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+0x000000003fac3bc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+0x000000003fb48bc0      1      0 R--r-- \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+
+
+11) volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003fa3ebc0 -D .
+
+output --->
+Volatility Foundation Volatility Framework 2.6
+DataSectionObject 0x3fa3ebc0   None   \Device\HarddiskVolume2\Users\Alissa Simpson\Documents\Important.rar
+
+
+12) volatility -f MemoryDump_Lab1.raw --profile=Win7SP1x64 hashdump   ---> using this commend we dump all hash  
+ouput --
+Volatility Foundation Volatility Framework 2.6
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+Guest:501:aad3b435b51404eeaad3b435b51404ee:31d6cfe0d16ae931b73c59d7e0c089c0:::
+SmartNet:1001:aad3b435b51404eeaad3b435b51404ee:4943abb39473a6f32c11301f4987e7e0:::
+HomeGroupUser$:1002:aad3b435b51404eeaad3b435b51404ee:f0fc3d257814e08fea06e63c5762ebd5:::
+Alissa Simpson:1003:aad3b435b51404eeaad3b435b51404ee:f4ff64c8baac57d22f22edc681055ba6:::
+
+13) unrar e file.rar 
+
+14)   cyber chef ---> https://gchq.github.io/CyberChef/
+
+15)eog file.png
+
+
+
+   
+
