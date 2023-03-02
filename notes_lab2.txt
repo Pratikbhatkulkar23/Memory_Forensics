@@ -1,0 +1,292 @@
+1) volatility -f MemoryDump_Lab2.raw imageinfo
+Volatility Foundation Volatility Framework 2.6
+INFO    : volatility.debug    : Determining profile based on KDBG search...
+          Suggested Profile(s) : Win7SP1x64, Win7SP0x64, Win2008R2SP0x64, Win2008R2SP1x64_23418, Win2008R2SP1x64, Win7SP1x64_23418
+                     AS Layer1 : WindowsAMD64PagedMemory (Kernel AS)
+                     AS Layer2 : FileAddressSpace (/home/pratik/Desktop/Memory_Forensics/MemLabs/Lab 2/MemoryDump_Lab2.raw)
+                      PAE type : No PAE
+                           DTB : 0x187000L
+                          KDBG : 0xf800027f20a0L
+          Number of Processors : 1
+     Image Type (Service Pack) : 1
+                KPCR for CPU 0 : 0xfffff800027f3d00L
+             KUSER_SHARED_DATA : 0xfffff78000000000L
+           Image date and time : 2019-12-14 10:38:46 UTC+0000
+     Image local date and time : 2019-12-14 16:08:46 +0530
+2)olatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 pslist
+Volatility Foundation Volatility Framework 2.6
+Offset(V)          Name                    PID   PPID   Thds     Hnds   Sess  Wow64 Start                          Exit                          
+------------------ -------------------- ------ ------ ------ -------- ------ ------ ------------------------------ ------------------------------
+0xfffffa8000ca0040 System                    4      0     80      541 ------      0 2019-12-14 10:35:21 UTC+0000                                 
+0xfffffa80014976c0 smss.exe                248      4      3       37 ------      0 2019-12-14 10:35:21 UTC+0000                                 
+0xfffffa80014fdb30 csrss.exe               320    312     10      446      0      0 2019-12-14 10:35:27 UTC+0000                                 
+0xfffffa8001c40060 csrss.exe               368    360      8      237      1      0 2019-12-14 10:35:28 UTC+0000                                 
+0xfffffa8000ca8840 psxss.exe               376    248     18      786      0      0 2019-12-14 10:35:28 UTC+0000                                 
+0xfffffa8001c5a700 winlogon.exe            416    360      6      112      1      0 2019-12-14 10:35:30 UTC+0000                                 
+0xfffffa8001c5b2b0 wininit.exe             424    312      3       75      0      0 2019-12-14 10:35:30 UTC+0000                                 
+0xfffffa8001c95320 services.exe            484    424      8      206      0      0 2019-12-14 10:35:31 UTC+0000                                 
+0xfffffa8001c9d910 lsass.exe               492    424      8      546      0      0 2019-12-14 10:35:31 UTC+0000                                 
+0xfffffa8001c9e2d0 lsm.exe                 500    424     10      181      0      0 2019-12-14 10:35:31 UTC+0000                                 
+0xfffffa8001cec790 svchost.exe             588    484     12      354      0      0 2019-12-14 10:35:35 UTC+0000                                 
+0xfffffa8001d13060 VBoxService.ex          652    484     14      135      0      0 2019-12-14 10:35:36 UTC+0000                                 
+0xfffffa8001d4ab30 svchost.exe             720    484      7      275      0      0 2019-12-14 10:35:37 UTC+0000                                 
+0xfffffa8001d76320 svchost.exe             812    484     21      474      0      0 2019-12-14 10:35:38 UTC+0000                                 
+0xfffffa8001da6930 svchost.exe             852    484     20      417      0      0 2019-12-14 10:35:38 UTC+0000                                 
+0xfffffa8001dacb30 svchost.exe             876    484     39      962      0      0 2019-12-14 10:35:38 UTC+0000                                 
+0xfffffa8001df65f0 audiodg.exe             268    812      7      131      0      0 2019-12-14 10:35:41 UTC+0000                                 
+0xfffffa8001e1eb30 svchost.exe             472    484     12      301      0      0 2019-12-14 10:35:42 UTC+0000                                 
+0xfffffa8001e47740 svchost.exe            1044    484     16      361      0      0 2019-12-14 10:35:43 UTC+0000                                 
+
+
+3)volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 cmdline -----> what argumet supply to the cmsline or particular file pass arguent
+
+
+Volatility Foundation Volatility Framework 2.6
+************************************************************************
+System pid:      4
+************************************************************************
+smss.exe pid:    248
+Command line : \SystemRoot\System32\smss.exe
+************************************************************************
+csrss.exe pid:    320
+Command line : %SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=winsrv:ConServerDllInitialization,2 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16
+************************************************************************
+csrss.exe pid:    368
+Command line : %SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=winsrv:ConServerDllInitialization,2 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16
+************************************************************************
+psxss.exe pid:    376
+Command line : %SystemRoot%\system32\psxss.exe
+************************************************************************
+winlogon.exe pid:    416
+Command line : winlogon.exe
+************************************************************************
+wininit.exe pid:    424
+Command line : wininit.exe
+************************************************************************
+services.exe pid:    484
+Command line : C:\Windows\system32\services.exe
+************************************************************************
+lsass.exe pid:    492
+Command line : C:\Windows\system32\lsass.exe
+************************************************************************
+lsm.exe pid:    500
+Command line : C:\Windows\system32\lsm.exe
+************************************************************************
+svchost.exe pid:    588
+Command line : C:\Windows\system32\svchost.exe -k DcomLaunch
+************************************************************************
+VBoxService.ex pid:    652
+Command line : C:\Windows\System32\VBoxService.exe
+************************************************************************
+svchost.exe pid:    720
+Command line : C:\Windows\system32\svchost.exe -k RPCSS
+************************************************************************
+svchost.exe pid:    812
+Command line : C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted
+************************************************************************
+svchost.exe pid:    852
+Command line : C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted
+************************************************************************
+svchost.exe pid:    876
+Command line : C:\Windows\system32\svchost.exe -k netsvcs
+************************************************************************
+audiodg.exe pid:    268
+Command line : C:\Windows\system32\AUDIODG.EXE 0x2a4
+************************************************************************
+svchost.exe pid:    472
+Command line : C:\Windows\system32\svchost.exe -k LocalService
+************************************************************************
+svchost.exe pid:   1044
+Command line : C:\Windows\system32\svchost.exe -k NetworkService
+************************************************************************
+spoolsv.exe pid:   1208
+Command line : C:\Windows\System32\spoolsv.exe
+************************************************************************
+svchost.exe pid:   1248
+Command line : C:\Windows\system32\svchost.exe -k LocalServiceNoNetwork
+************************************************************************
+svchost.exe pid:   1368
+Command line : C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation
+************************************************************************
+TCPSVCS.EXE pid:   1412
+Command line : C:\Windows\System32\tcpsvcs.exe
+************************************************************************
+taskhost.exe pid:   1928
+Command line : "taskhost.exe"
+************************************************************************
+taskeng.exe pid:   1996
+Command line : taskeng.exe {5C750F66-3822-47A6-A873-1EB5DDC99795}
+************************************************************************
+dwm.exe pid:   2012
+Command line : "C:\Windows\system32\Dwm.exe"
+************************************************************************
+explorer.exe pid:   1064
+Command line : C:\Windows\Explorer.EXE
+************************************************************************
+SearchIndexer. pid:   1836
+Command line : C:\Windows\system32\SearchIndexer.exe /Embedding
+************************************************************************
+VBoxTray.exe pid:   1896
+Command line : "C:\Windows\System32\VBoxTray.exe" 
+************************************************************************
+csrss.exe pid:   2308
+Command line : %SystemRoot%\system32\csrss.exe ObjectDirectory=\Windows SharedSection=1024,20480,768 Windows=On SubSystemType=Windows ServerDll=basesrv,1 ServerDll=winsrv:UserServerDllInitialization,3 ServerDll=winsrv:ConServerDllInitialization,2 ServerDll=sxssrv,4 ProfileControl=Off MaxRequestThreads=16
+************************************************************************
+winlogon.exe pid:   2336
+Command line : winlogon.exe
+************************************************************************
+taskhost.exe pid:   2604
+Command line : "taskhost.exe"
+************************************************************************
+dwm.exe pid:   2652
+Command line : "C:\Windows\system32\Dwm.exe"
+************************************************************************
+explorer.exe pid:   2664
+Command line : C:\Windows\Explorer.EXE
+************************************************************************
+VBoxTray.exe pid:   2792
+Command line : "C:\Windows\System32\VBoxTray.exe" 
+************************************************************************
+cmd.exe pid:   2096
+Command line : "C:\Windows\system32\cmd.exe" 
+************************************************************************
+conhost.exe pid:   2068
+Command line : \??\C:\Windows\system32\conhost.exe
+************************************************************************
+chrome.exe pid:   2296
+Command line : "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" 
+************************************************************************
+chrome.exe pid:   2304
+Command line : 
+************************************************************************
+chrome.exe pid:   2476
+Command line : "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --type=watcher --main-thread-id=2312 --on-initialized-event-handle=12 --parent-handle=164 /prefetch:6
+************************************************************************
+chrome.exe pid:   2964
+Command line : "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --type=utility --field-trial-handle=920,18321715965689748971,11882971420757355211,131072 --lang=en-US --service-sandbox-type=network --enable-audio-service-sandbox --service-request-channel-token=7874901870054399126 --mojo-platform-channel-handle=1036 /prefetch:8
+************************************************************************
+chrome.exe pid:   2572
+Command line : 
+************************************************************************
+WmiPrvSE.exe pid:   2636
+Command line : C:\Windows\system32\wbem\wmiprvse.exe
+************************************************************************
+WmiApSrv.exe pid:   2004
+Command line : C:\Windows\system32\wbem\WmiApSrv.exe
+************************************************************************
+chrome.exe pid:   1632
+Command line : "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --type=renderer --field-trial-handle=920,18321715965689748971,11882971420757355211,131072 --disable-gpu-compositing --lang=en-US --disable-oor-cors --enable-auto-reload --device-scale-factor=1 --num-raster-threads=1 --service-request-channel-token=14321750869504108513 --renderer-client-id=11 --no-v8-untrusted-code-mitigations --mojo-platform-channel-handle=2096 /prefetch:1
+************************************************************************
+dllhost.exe pid:   2376
+Command line : C:\Windows\system32\DllHost.exe /Processid:{76D0CB12-7604-4048-B83C-1005C7DDC503}
+************************************************************************
+KeePass.exe pid:   3008
+Command line : "C:\Program Files (x86)\KeePass Password Safe 2\KeePass.exe" "C:\Users\SmartNet\Secrets\Hidden.kdbx"
+************************************************************************
+sppsvc.exe pid:   2764
+Command line : C:\Windows\system32\sppsvc.exe
+************************************************************************
+svchost.exe pid:   1076
+Command line : C:\Windows\System32\svchost.exe -k secsvcs
+************************************************************************
+wmpnetwk.exe pid:    928
+Command line : "C:\Program Files\Windows Media Player\wmpnetwk.exe"
+************************************************************************
+notepad.exe pid:   3260
+Command line : "C:\Windows\system32\NOTEPAD.EXE" C:\Users\SmartNet\Secrets\Hidden.kdbx
+************************************************************************
+DumpIt.exe pid:   3844
+Command line : "C:\Users\SmartNet\Downloads\DumpIt\DumpIt.exe" 
+************************************************************************
+conhost.exe pid:   3852
+Command line : \??\C:\Windows\system32\conhost.exe
+************************************************************************
+WmiPrvSE.exe pid:   4004
+
+
+4)volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 filescan | grep -i Hidden.kdbx      ----> find locatio of paricual file
+Volatility Foundation Volatility Framework 2.6
+0x000000003fb112a0     16      0 R--r-- \Device\HarddiskVolume2\Users\SmartNet\Secrets\Hidden.kdbx
+
+5)volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003fb112a0 -D .  ---> dum file from particual address
+Volatility Foundation Volatility Framework 2.6
+DataSectionObject 0x3fb112a0   None   \Device\HarddiskVolume2\Users\SmartNet\Secrets\Hidden.kdbx
+
+6)mv file.None.0xfffffa8001593ba0.dat Hidden.kdbx    ----> change name of file
+
+
+
+7)volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 envars  ---> checking envarment variable
+Volatility Foundation Volatility Framework 2.6
+Pid      Process              Block              Variable                       Value
+-------- -------------------- ------------------ ------------------------------ -----
+     248 smss.exe             0x00000000002d1320 Path                           C:\Windows\System32
+     248 smss.exe             0x00000000002d1320 SystemDrive                    C:
+     248 smss.exe             0x00000000002d1320 SystemRoot                     C:\Windows
+     320 csrss.exe            0x0000000000481320 ComSpec                        C:\Windows\system32\cmd.exe
+     320 csrss.exe            0x0000000000481320 FP_NO_HOST_CHECK               NO
+     320 csrss.exe            0x0000000000481320 NEW_TMP                        C:\Windows\ZmxhZ3t3M2xjMG0zX1QwXyRUNGczXyFfT2ZfTDRCXzJ9
+     320 csrss.exe            0x0000000000481320 NUMBER_OF_PROCESSORS           1
+     320 csrss.exe            0x0000000000481320 OS                             Windows_NT
+     320 csrss.exe            0x0000000000481320 Path                           C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\
+     320 csrss.exe            0x0000000000481320 PATHEXT                        .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+     320 csrss.exe            0x0000000000481320 PROCESSOR_ARCHITECTURE         AMD64
+     320 csrss.exe            0x0000000000481320 PROCESSOR_IDENTIFIER           Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+     320 csrss.exe            0x0000000000481320 PROCESSOR_LEVEL                6
+     320 csrss.exe            0x0000000000481320 PROCESSOR_REVISION             8e09
+     320 csrss.exe            0x0000000000481320 PSModulePath                   C:\Windows\system32\WindowsPowerShell\v1.0\Modules\
+     320 csrss.exe            0x0000000000481320 SystemDrive  
+
+
+8)volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 clipboard   ---> dump clipboard 
+
+
+9)volatility -f MemoryDump_Lab2.raw --profile=Win7SP1x64 filescan | grep -i password  -----> dump all password  name file from memmory 
+Volatility Foundation Volatility Framework 2.6
+0x000000003e868370     16      0 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePass.exe.config
+0x000000003e873070      8      0 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePass.exe
+0x000000003e8ef2d0     13      0 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePass.exe
+0x000000003e8f0360      4      0 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePass.XmlSerializers.dll
+0x000000003eaf7880     15      1 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePass.XmlSerializers.dll
+0x000000003fb0abc0     10      0 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePassLibC64.dll
+0x000000003fce1c70      1      0 R--r-d \Device\HarddiskVolume2\Users\Alissa Simpson\Pictures\Password.png
+0x000000003fd62f20      2      0 R--r-- \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\KeePass.config.xml
+0x000000003fecf820     15      0 R--r-d \Device\HarddiskVolume2\Program Files (x86)\KeePass Password Safe 2\unins000.exe
+
+
+10) volatility --plugins=../volatility-plugins/ -f MemoryDump_Lab2.raw --profile=Win7SP1x64 chromehistory -----> dump chrome history
+Volatility Foundation Volatility Framework 2.6
+Index  URL                                                                              Title                                                                            Visits Typed Last Visit Time            Hidden Favicon ID
+------ -------------------------------------------------------------------------------- -------------------------------------------------------------------------------- ------ ----- -------------------------- ------ ----------
+    34 https://bi0s.in/                                                                 Amrita Bios                                                                           1     1 2019-12-14 10:37:11.596681        N/A       
+    33 http://bi0s.in/                                                                  Amrita Bios                                                                           1     0 2019-12-14 10:37:11.596681        N/A       
+    32 https://mega.nz/#F!TrgSQQTS!H0ZrUzF0B-ZKNM3y9E76lg                               MEGA                                                                                  2     0 2019-12-14 10:21:39.602970        N/A       
+    31 https://www.ndtv.com/                                                            NDTV: Latest News, India News, Breaking...s, Bollywood, Cricket, Videos & Photos      1     1 2019-12-14 10:18:09.449115        N/A       
+    30 http://ndtv.com/                                                                 NDTV: Latest News, India News, Breaking...s, Bollywood, Cricket, Videos & Photos      1     0 2019-12-14 10:18:09.449115        N/A       
+    28 http://blog.bi0s.in/                                                             bi0s                                                                                  1     0 2019-12-14 09:41:52.269568        N/A       
+    29 https://blog.bi0s.in/                                                            bi0s                                                                                  1     1 2019-12-14 10:18:12.073607        N/A       
+    27 https://r3xnation.wordpress.com/about/                                           About – R3xNation                                                                   1     0 2019-12-14 10:07:31.296539        N/A       
+    26 https://www.youtube.com/                                                         YouTube                                                                               1     1 2019-12-14 10:04:59.173510        N/A       
+    24 http://in.yahoo.com/                                                             Yahoo India | News, Finance, Cricket, Lifestyle and Entertainment                     1     0 2019-12-14 09:33:25.210345        N/A       
+    23 http://yahoo.in/                                                                 Yahoo India | News, Finance, Cricket, Lifestyle and Entertainment                     1     1 2019-12-14 09:33:25.210345        N/A       
+    25 https://in.yahoo.com/                                                            Yahoo India | News, Finance, Cricket, Lifestyle and Entertainment                     2     0 2019-12-14 09:33:32.266003        N/A       
+    21 https://www.bbc.com/sport/football/50780855                                      Jurgen Klopp signs new Liverpool deal until 2024 - BBC Sport                          1     0 2019-12-14 09:31:35.842850        N/A       
+    19 https://bbc.com/                                                                 BBC - Homepage                                                                        1     1 2019-12-14 09:30:55.836868        N/A       
+    18 http://bbc.com/                                                                  BBC - Homepage             
+    
+    
+    
+    
+11) with -n hash  
+
+echo -n flag{w311_3rd_stage_was_easy} | sha1sum    -----> using this commend we flag convert into sha1sum and -n use becoz new line not add in hash hash not change
+331951d605011459eed8bc0d13cd41ea2cd5e473  -
+
+               
+12) without -n hash
+
+echo flag{w311_3rd_stage_was_easy} | sha1sum
+d64364ab024de6acc31fab048d6b7ea416c8b445  -
+             
+               
+       
