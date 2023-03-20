@@ -1,0 +1,13 @@
+1)volatility -f MemoryDump_Lab4.raw --profile=Win7SP1x64 filescan | grep -i "\\Users\\" | grep -i "jpeg\|jpg\|png\|txt\|py\|exe"
+2) volatility -f MemoryDump_Lab4.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003e8ad250,0x000000003e8d19e0,0x000000003fc398d0 -D.
+---> dump mutiple file 
+
+important file - 0x000000003fc398d0
+
+master file table - store file index
+
+3)volatility -f MemoryDump_Lab4.raw --profile=Win7SP1x64 mftparser > mftdata ---> for geting delete file from master tabel
+4)cat mftdata | grep -i important.txt   ---> checking file in dum master file table
+5)cat mftdata | grep -i important.txt -A 30  ---> (-A 30  after 30 show data)
+
+

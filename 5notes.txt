@@ -1,0 +1,5 @@
+1)volatility -f MemoryDump_Lab5.raw --profile=Win7SP1x64 dumpfiles -Q 0x000000003eed56f0 -D.    -> dumpfile uisng memory address
+2)volatility -f MemoryDump_Lab5.raw --profile=Win7SP1x64 screenshot -D.  -> take screen short from  rawfile
+
+3)string MemoryDump_Lab5.raw | grep -i Zxmhz3sh   -> you want grab prarticular string form rawfile
+4)   

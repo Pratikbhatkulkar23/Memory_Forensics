@@ -1,0 +1,5 @@
+give mutiple pip 
+
+volatility -f MemoryDump_Lab3.raw --profile=Win7SP1x86_23418 filescan | grep -i "evilescript.py \| vip.txt"
+
+volatility -f MemoryDump_Lab3.raw --profile=Win7SP1x86_23418 dumpfiles -Q 
